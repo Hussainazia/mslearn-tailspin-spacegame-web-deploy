@@ -72,7 +72,7 @@ stages:
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-20.04'
-    environment: dev
+    environment: NewEnv
     variables:
     - group: Release
     strategy:
@@ -84,7 +84,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              appType: 'WebAPP'
-              azureSubscription: 'Tailspin - Space Game'
+              appType: 'webAppLinux'
+              azureSubscription: 'Tailspin WebAPP'
               appName: '$(WebAppName)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
